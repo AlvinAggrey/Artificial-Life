@@ -73,7 +73,7 @@ int						g_viewHeight;
 vecBoid					g_Boids;
 
 
-void placeFish(float x , float y, float z)
+void placeFish()
 {
 	HRESULT hr;
 
@@ -81,26 +81,10 @@ void placeFish(float x , float y, float z)
 	hr = fish->initMesh(g_pd3dDevice, g_pImmediateContext);
 	if (FAILED(hr))
 		return;
-	fish->setPosition(XMFLOAT3(x, y, z));
+	fish->setPosition(XMFLOAT3(0, 0, 0));
 	g_Boids.push_back(fish);
 
 
-}
-
-void SpawnFish(XMFLOAT3 origin, int num)
-{
-    //height and width
-    int spawnCube[2] = {num/2, num/2};
-    int spacing = 1;
-
-    for (int x = 1; x <= spawnCube[0]; x++)
-    {
-        for (int y = 1; y <= spawnCube[1]; y++)
-        {
-            placeFish(origin.x * 1, origin.y, origin.z);
-        }
-
-    }
 }
 
 //--------------------------------------------------------------------------------------
@@ -514,8 +498,6 @@ HRESULT		InitMesh()
 
 
 	placeFish();
-    placeFish();
-
 
 	return hr;
 }
