@@ -6,6 +6,8 @@
 Boid::Boid()
 {
 	m_position = XMFLOAT3(0, 0, 0);
+	m_speed = 7;
+	createRandomDirection();
 }
 
 Boid::~Boid()
@@ -39,8 +41,11 @@ void Boid::update(float t, vecBoid* boidList)
 	XMFLOAT3  vAlignment = calculateAlignmentVector(&nearBoids);
 	XMFLOAT3  vCohesion = calculateCohesionVector(&nearBoids);
 
+	setDirection(vCohesion);
 	// set me
-	//m_position = ;
+	XMFLOAT3 normDirection = normaliseFloat3(m_direction);
+	XMFLOAT3 travelDistance = multiplyFloat3(normDirection, m_speed * t);
+	m_position = addFloat3 (m_position, travelDistance);
 
 	DrawableGameObject::update(t);
 }
@@ -84,8 +89,12 @@ XMFLOAT3 Boid::calculateCohesionVector(vecBoid* boidList)
 		return nearby;
 
 	// calculate average position of nearby
+	XMFLOAT3 sumPos;
 	for (Boid* boid : *boidList) {
+		sumPos = addFloat3(sumPos, *boid->getPosition());
 	}
+
+	nearby = divideFloat3(sumPos, boidList->size());
 
 	return normaliseFloat3(nearby); // nearby is the direction to where the other drawables are
 }

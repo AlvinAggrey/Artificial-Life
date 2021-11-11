@@ -29,5 +29,8 @@ protected:
 
 	XMFLOAT3							m_direction;
 	//unsigned int*						m_nearbyDrawables;
+
+	//characteristics
+	int m_speed;
 };
 
