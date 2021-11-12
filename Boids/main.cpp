@@ -89,6 +89,7 @@ void placeFish(int xPos = 0, int yPos = 0, int zPos = 0)
 
 void SpawnFish(int number, float spacing = 2.0f)
 {
+    //the dimension is number
     // spawn fish in a cube in the center of the screen top right to bottom left
     int distanceFromCenter = number/2;
 
@@ -512,7 +513,7 @@ HRESULT		InitMesh()
 
 
 	//placeFish();
-    SpawnFish(10, 4);
+    SpawnFish(10, 15);
 
 	return hr;
 }

@@ -21,16 +21,22 @@ protected:
 	void								createRandomDirection();
 
 	XMFLOAT3							addFloat3(XMFLOAT3& f1, XMFLOAT3& f2);
+	XMFLOAT3							addFloat3(XMFLOAT3& f1, XMFLOAT3& f2, XMFLOAT3& f3);
 	XMFLOAT3							subtractFloat3(XMFLOAT3& f1, XMFLOAT3& f2);
+	XMFLOAT3 subtractFloat3(XMFLOAT3& f1, XMFLOAT3& f2, XMFLOAT3& f3);
 	XMFLOAT3							normaliseFloat3(XMFLOAT3& f1);
 	float								magnitudeFloat3(XMFLOAT3& f1);
 	XMFLOAT3							multiplyFloat3(XMFLOAT3& f1, const float scalar);
 	XMFLOAT3							divideFloat3(XMFLOAT3& f1, const float scalar);
+
+	float							distanceFloat3(XMFLOAT3& f1, XMFLOAT3& f2);
 
 	XMFLOAT3							m_direction;
 	//unsigned int*						m_nearbyDrawables;
 
 	//characteristics
 	int m_speed;
+	float m_personalSpace;
+	float m_cohesionRadius;
 };
 
